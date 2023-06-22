@@ -10,36 +10,33 @@ type ActionParserVisitor interface {
 	// Visit a parse tree produced by ActionParser#statement.
 	VisitStatement(ctx *StatementContext) interface{}
 
+	// Visit a parse tree produced by ActionParser#stmt.
+	VisitStmt(ctx *StmtContext) interface{}
+
 	// Visit a parse tree produced by ActionParser#sql_stmt.
 	VisitSql_stmt(ctx *Sql_stmtContext) interface{}
 
 	// Visit a parse tree produced by ActionParser#call_stmt.
 	VisitCall_stmt(ctx *Call_stmtContext) interface{}
 
+	// Visit a parse tree produced by ActionParser#call_receivers.
+	VisitCall_receivers(ctx *Call_receiversContext) interface{}
+
 	// Visit a parse tree produced by ActionParser#literal_value.
 	VisitLiteral_value(ctx *Literal_valueContext) interface{}
-
-	// Visit a parse tree produced by ActionParser#number_value.
-	VisitNumber_value(ctx *Number_valueContext) interface{}
 
 	// Visit a parse tree produced by ActionParser#variable_name.
 	VisitVariable_name(ctx *Variable_nameContext) interface{}
 
-	// Visit a parse tree produced by ActionParser#table_name.
-	VisitTable_name(ctx *Table_nameContext) interface{}
+	// Visit a parse tree produced by ActionParser#fn_name.
+	VisitFn_name(ctx *Fn_nameContext) interface{}
 
-	// Visit a parse tree produced by ActionParser#action_name.
-	VisitAction_name(ctx *Action_nameContext) interface{}
+	// Visit a parse tree produced by ActionParser#call_body.
+	VisitCall_body(ctx *Call_bodyContext) interface{}
 
-	// Visit a parse tree produced by ActionParser#column_name.
-	VisitColumn_name(ctx *Column_nameContext) interface{}
+	// Visit a parse tree produced by ActionParser#fn_arg.
+	VisitFn_arg(ctx *Fn_argContext) interface{}
 
-	// Visit a parse tree produced by ActionParser#action_literal_value.
-	VisitAction_literal_value(ctx *Action_literal_valueContext) interface{}
-
-	// Visit a parse tree produced by ActionParser#function_name.
-	VisitFunction_name(ctx *Function_nameContext) interface{}
-
-	// Visit a parse tree produced by ActionParser#expr.
-	VisitExpr(ctx *ExprContext) interface{}
+	// Visit a parse tree produced by ActionParser#fn_arg_list.
+	VisitFn_arg_list(ctx *Fn_arg_listContext) interface{}
 }

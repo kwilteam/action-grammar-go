@@ -11,6 +11,10 @@ func (v *BaseActionParserVisitor) VisitStatement(ctx *StatementContext) interfac
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseActionParserVisitor) VisitStmt(ctx *StmtContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseActionParserVisitor) VisitSql_stmt(ctx *Sql_stmtContext) interface{} {
 	return v.VisitChildren(ctx)
 }
@@ -19,11 +23,11 @@ func (v *BaseActionParserVisitor) VisitCall_stmt(ctx *Call_stmtContext) interfac
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseActionParserVisitor) VisitLiteral_value(ctx *Literal_valueContext) interface{} {
+func (v *BaseActionParserVisitor) VisitCall_receivers(ctx *Call_receiversContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseActionParserVisitor) VisitNumber_value(ctx *Number_valueContext) interface{} {
+func (v *BaseActionParserVisitor) VisitLiteral_value(ctx *Literal_valueContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
@@ -31,26 +35,18 @@ func (v *BaseActionParserVisitor) VisitVariable_name(ctx *Variable_nameContext) 
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseActionParserVisitor) VisitTable_name(ctx *Table_nameContext) interface{} {
+func (v *BaseActionParserVisitor) VisitFn_name(ctx *Fn_nameContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseActionParserVisitor) VisitAction_name(ctx *Action_nameContext) interface{} {
+func (v *BaseActionParserVisitor) VisitCall_body(ctx *Call_bodyContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseActionParserVisitor) VisitColumn_name(ctx *Column_nameContext) interface{} {
+func (v *BaseActionParserVisitor) VisitFn_arg(ctx *Fn_argContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseActionParserVisitor) VisitAction_literal_value(ctx *Action_literal_valueContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseActionParserVisitor) VisitFunction_name(ctx *Function_nameContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseActionParserVisitor) VisitExpr(ctx *ExprContext) interface{} {
+func (v *BaseActionParserVisitor) VisitFn_arg_list(ctx *Fn_arg_listContext) interface{} {
 	return v.VisitChildren(ctx)
 }
