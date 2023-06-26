@@ -28,6 +28,9 @@ type ActionParserVisitor interface {
 	// Visit a parse tree produced by ActionParser#variable_name.
 	VisitVariable_name(ctx *Variable_nameContext) interface{}
 
+	// Visit a parse tree produced by ActionParser#block_variable_name.
+	VisitBlock_variable_name(ctx *Block_variable_nameContext) interface{}
+
 	// Visit a parse tree produced by ActionParser#fn_name.
 	VisitFn_name(ctx *Fn_nameContext) interface{}
 

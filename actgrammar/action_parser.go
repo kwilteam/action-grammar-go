@@ -37,46 +37,50 @@ func actionparserParserInit() {
 	staticData.symbolicNames = []string{
 		"", "SCOL", "L_PAREN", "R_PAREN", "COMMA", "DOLLAR", "AT", "EQ", "PLUS",
 		"PERIOD", "SELECT_", "INSERT_", "UPDATE_", "DELETE_", "WITH_", "SQL_KEYWORDS",
-		"SQL_STMT", "IDENTIFIER", "VARIABLE", "UNSIGNED_NUMBER_LITERAL", "SIGNED_NUMBER_LITERAL",
-		"STRING_LITERAL", "WS", "TERMINATOR", "BLOCK_COMMENT", "LINE_COMMENT",
+		"SQL_STMT", "IDENTIFIER", "VARIABLE", "BLOCK_VARIABLE", "UNSIGNED_NUMBER_LITERAL",
+		"SIGNED_NUMBER_LITERAL", "STRING_LITERAL", "WS", "TERMINATOR", "BLOCK_COMMENT",
+		"LINE_COMMENT",
 	}
 	staticData.ruleNames = []string{
 		"statement", "stmt", "sql_stmt", "call_stmt", "call_receivers", "literal_value",
-		"variable_name", "fn_name", "call_body", "fn_arg", "fn_arg_list",
+		"variable_name", "block_variable_name", "fn_name", "call_body", "fn_arg",
+		"fn_arg_list",
 	}
 	staticData.predictionContextCache = antlr.NewPredictionContextCache()
 	staticData.serializedATN = []int32{
-		4, 1, 25, 79, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
+		4, 1, 26, 84, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
 		4, 2, 5, 7, 5, 2, 6, 7, 6, 2, 7, 7, 7, 2, 8, 7, 8, 2, 9, 7, 9, 2, 10, 7,
-		10, 1, 0, 4, 0, 24, 8, 0, 11, 0, 12, 0, 25, 1, 1, 1, 1, 3, 1, 30, 8, 1,
-		1, 2, 1, 2, 1, 2, 1, 3, 1, 3, 1, 3, 3, 3, 38, 8, 3, 1, 3, 1, 3, 1, 3, 1,
-		4, 1, 4, 1, 4, 5, 4, 46, 8, 4, 10, 4, 12, 4, 49, 9, 4, 1, 5, 1, 5, 1, 6,
-		1, 6, 1, 7, 1, 7, 1, 7, 3, 7, 58, 8, 7, 1, 8, 1, 8, 1, 8, 1, 8, 1, 8, 1,
-		9, 1, 9, 3, 9, 67, 8, 9, 1, 10, 3, 10, 70, 8, 10, 1, 10, 1, 10, 5, 10,
-		74, 8, 10, 10, 10, 12, 10, 77, 9, 10, 1, 10, 0, 0, 11, 0, 2, 4, 6, 8, 10,
-		12, 14, 16, 18, 20, 0, 1, 2, 0, 19, 19, 21, 21, 75, 0, 23, 1, 0, 0, 0,
-		2, 29, 1, 0, 0, 0, 4, 31, 1, 0, 0, 0, 6, 37, 1, 0, 0, 0, 8, 42, 1, 0, 0,
-		0, 10, 50, 1, 0, 0, 0, 12, 52, 1, 0, 0, 0, 14, 54, 1, 0, 0, 0, 16, 59,
-		1, 0, 0, 0, 18, 66, 1, 0, 0, 0, 20, 69, 1, 0, 0, 0, 22, 24, 3, 2, 1, 0,
-		23, 22, 1, 0, 0, 0, 24, 25, 1, 0, 0, 0, 25, 23, 1, 0, 0, 0, 25, 26, 1,
-		0, 0, 0, 26, 1, 1, 0, 0, 0, 27, 30, 3, 4, 2, 0, 28, 30, 3, 6, 3, 0, 29,
-		27, 1, 0, 0, 0, 29, 28, 1, 0, 0, 0, 30, 3, 1, 0, 0, 0, 31, 32, 5, 16, 0,
-		0, 32, 33, 5, 1, 0, 0, 33, 5, 1, 0, 0, 0, 34, 35, 3, 8, 4, 0, 35, 36, 5,
-		7, 0, 0, 36, 38, 1, 0, 0, 0, 37, 34, 1, 0, 0, 0, 37, 38, 1, 0, 0, 0, 38,
-		39, 1, 0, 0, 0, 39, 40, 3, 16, 8, 0, 40, 41, 5, 1, 0, 0, 41, 7, 1, 0, 0,
-		0, 42, 47, 3, 12, 6, 0, 43, 44, 5, 4, 0, 0, 44, 46, 3, 12, 6, 0, 45, 43,
-		1, 0, 0, 0, 46, 49, 1, 0, 0, 0, 47, 45, 1, 0, 0, 0, 47, 48, 1, 0, 0, 0,
-		48, 9, 1, 0, 0, 0, 49, 47, 1, 0, 0, 0, 50, 51, 7, 0, 0, 0, 51, 11, 1, 0,
-		0, 0, 52, 53, 5, 18, 0, 0, 53, 13, 1, 0, 0, 0, 54, 57, 5, 17, 0, 0, 55,
-		56, 5, 9, 0, 0, 56, 58, 5, 17, 0, 0, 57, 55, 1, 0, 0, 0, 57, 58, 1, 0,
-		0, 0, 58, 15, 1, 0, 0, 0, 59, 60, 3, 14, 7, 0, 60, 61, 5, 2, 0, 0, 61,
-		62, 3, 20, 10, 0, 62, 63, 5, 3, 0, 0, 63, 17, 1, 0, 0, 0, 64, 67, 3, 10,
-		5, 0, 65, 67, 3, 12, 6, 0, 66, 64, 1, 0, 0, 0, 66, 65, 1, 0, 0, 0, 67,
-		19, 1, 0, 0, 0, 68, 70, 3, 18, 9, 0, 69, 68, 1, 0, 0, 0, 69, 70, 1, 0,
-		0, 0, 70, 75, 1, 0, 0, 0, 71, 72, 5, 4, 0, 0, 72, 74, 3, 18, 9, 0, 73,
-		71, 1, 0, 0, 0, 74, 77, 1, 0, 0, 0, 75, 73, 1, 0, 0, 0, 75, 76, 1, 0, 0,
-		0, 76, 21, 1, 0, 0, 0, 77, 75, 1, 0, 0, 0, 8, 25, 29, 37, 47, 57, 66, 69,
-		75,
+		10, 2, 11, 7, 11, 1, 0, 4, 0, 26, 8, 0, 11, 0, 12, 0, 27, 1, 1, 1, 1, 3,
+		1, 32, 8, 1, 1, 2, 1, 2, 1, 2, 1, 3, 1, 3, 1, 3, 3, 3, 40, 8, 3, 1, 3,
+		1, 3, 1, 3, 1, 4, 1, 4, 1, 4, 5, 4, 48, 8, 4, 10, 4, 12, 4, 51, 9, 4, 1,
+		5, 1, 5, 1, 6, 1, 6, 1, 7, 1, 7, 1, 8, 1, 8, 1, 8, 3, 8, 62, 8, 8, 1, 9,
+		1, 9, 1, 9, 1, 9, 1, 9, 1, 10, 1, 10, 1, 10, 3, 10, 72, 8, 10, 1, 11, 3,
+		11, 75, 8, 11, 1, 11, 1, 11, 5, 11, 79, 8, 11, 10, 11, 12, 11, 82, 9, 11,
+		1, 11, 0, 0, 12, 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 0, 1, 2, 0,
+		20, 20, 22, 22, 80, 0, 25, 1, 0, 0, 0, 2, 31, 1, 0, 0, 0, 4, 33, 1, 0,
+		0, 0, 6, 39, 1, 0, 0, 0, 8, 44, 1, 0, 0, 0, 10, 52, 1, 0, 0, 0, 12, 54,
+		1, 0, 0, 0, 14, 56, 1, 0, 0, 0, 16, 58, 1, 0, 0, 0, 18, 63, 1, 0, 0, 0,
+		20, 71, 1, 0, 0, 0, 22, 74, 1, 0, 0, 0, 24, 26, 3, 2, 1, 0, 25, 24, 1,
+		0, 0, 0, 26, 27, 1, 0, 0, 0, 27, 25, 1, 0, 0, 0, 27, 28, 1, 0, 0, 0, 28,
+		1, 1, 0, 0, 0, 29, 32, 3, 4, 2, 0, 30, 32, 3, 6, 3, 0, 31, 29, 1, 0, 0,
+		0, 31, 30, 1, 0, 0, 0, 32, 3, 1, 0, 0, 0, 33, 34, 5, 16, 0, 0, 34, 35,
+		5, 1, 0, 0, 35, 5, 1, 0, 0, 0, 36, 37, 3, 8, 4, 0, 37, 38, 5, 7, 0, 0,
+		38, 40, 1, 0, 0, 0, 39, 36, 1, 0, 0, 0, 39, 40, 1, 0, 0, 0, 40, 41, 1,
+		0, 0, 0, 41, 42, 3, 18, 9, 0, 42, 43, 5, 1, 0, 0, 43, 7, 1, 0, 0, 0, 44,
+		49, 3, 12, 6, 0, 45, 46, 5, 4, 0, 0, 46, 48, 3, 12, 6, 0, 47, 45, 1, 0,
+		0, 0, 48, 51, 1, 0, 0, 0, 49, 47, 1, 0, 0, 0, 49, 50, 1, 0, 0, 0, 50, 9,
+		1, 0, 0, 0, 51, 49, 1, 0, 0, 0, 52, 53, 7, 0, 0, 0, 53, 11, 1, 0, 0, 0,
+		54, 55, 5, 18, 0, 0, 55, 13, 1, 0, 0, 0, 56, 57, 5, 19, 0, 0, 57, 15, 1,
+		0, 0, 0, 58, 61, 5, 17, 0, 0, 59, 60, 5, 9, 0, 0, 60, 62, 5, 17, 0, 0,
+		61, 59, 1, 0, 0, 0, 61, 62, 1, 0, 0, 0, 62, 17, 1, 0, 0, 0, 63, 64, 3,
+		16, 8, 0, 64, 65, 5, 2, 0, 0, 65, 66, 3, 22, 11, 0, 66, 67, 5, 3, 0, 0,
+		67, 19, 1, 0, 0, 0, 68, 72, 3, 10, 5, 0, 69, 72, 3, 12, 6, 0, 70, 72, 3,
+		14, 7, 0, 71, 68, 1, 0, 0, 0, 71, 69, 1, 0, 0, 0, 71, 70, 1, 0, 0, 0, 72,
+		21, 1, 0, 0, 0, 73, 75, 3, 20, 10, 0, 74, 73, 1, 0, 0, 0, 74, 75, 1, 0,
+		0, 0, 75, 80, 1, 0, 0, 0, 76, 77, 5, 4, 0, 0, 77, 79, 3, 20, 10, 0, 78,
+		76, 1, 0, 0, 0, 79, 82, 1, 0, 0, 0, 80, 78, 1, 0, 0, 0, 80, 81, 1, 0, 0,
+		0, 81, 23, 1, 0, 0, 0, 82, 80, 1, 0, 0, 0, 8, 27, 31, 39, 49, 61, 71, 74,
+		80,
 	}
 	deserializer := antlr.NewATNDeserializer(nil)
 	staticData.atn = deserializer.Deserialize(staticData.serializedATN)
@@ -133,28 +137,30 @@ const (
 	ActionParserSQL_STMT                = 16
 	ActionParserIDENTIFIER              = 17
 	ActionParserVARIABLE                = 18
-	ActionParserUNSIGNED_NUMBER_LITERAL = 19
-	ActionParserSIGNED_NUMBER_LITERAL   = 20
-	ActionParserSTRING_LITERAL          = 21
-	ActionParserWS                      = 22
-	ActionParserTERMINATOR              = 23
-	ActionParserBLOCK_COMMENT           = 24
-	ActionParserLINE_COMMENT            = 25
+	ActionParserBLOCK_VARIABLE          = 19
+	ActionParserUNSIGNED_NUMBER_LITERAL = 20
+	ActionParserSIGNED_NUMBER_LITERAL   = 21
+	ActionParserSTRING_LITERAL          = 22
+	ActionParserWS                      = 23
+	ActionParserTERMINATOR              = 24
+	ActionParserBLOCK_COMMENT           = 25
+	ActionParserLINE_COMMENT            = 26
 )
 
 // ActionParser rules.
 const (
-	ActionParserRULE_statement      = 0
-	ActionParserRULE_stmt           = 1
-	ActionParserRULE_sql_stmt       = 2
-	ActionParserRULE_call_stmt      = 3
-	ActionParserRULE_call_receivers = 4
-	ActionParserRULE_literal_value  = 5
-	ActionParserRULE_variable_name  = 6
-	ActionParserRULE_fn_name        = 7
-	ActionParserRULE_call_body      = 8
-	ActionParserRULE_fn_arg         = 9
-	ActionParserRULE_fn_arg_list    = 10
+	ActionParserRULE_statement           = 0
+	ActionParserRULE_stmt                = 1
+	ActionParserRULE_sql_stmt            = 2
+	ActionParserRULE_call_stmt           = 3
+	ActionParserRULE_call_receivers      = 4
+	ActionParserRULE_literal_value       = 5
+	ActionParserRULE_variable_name       = 6
+	ActionParserRULE_block_variable_name = 7
+	ActionParserRULE_fn_name             = 8
+	ActionParserRULE_call_body           = 9
+	ActionParserRULE_fn_arg              = 10
+	ActionParserRULE_fn_arg_list         = 11
 )
 
 // IStatementContext is an interface to support dynamic dispatch.
@@ -283,17 +289,17 @@ func (p *ActionParser) Statement() (localctx IStatementContext) {
 	}()
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(23)
+	p.SetState(25)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	for ok := true; ok; ok = ((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&458752) != 0) {
 		{
-			p.SetState(22)
+			p.SetState(24)
 			p.Stmt()
 		}
 
-		p.SetState(25)
+		p.SetState(27)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
@@ -416,21 +422,21 @@ func (p *ActionParser) Stmt() (localctx IStmtContext) {
 		}
 	}()
 
-	p.SetState(29)
+	p.SetState(31)
 	p.GetErrorHandler().Sync(p)
 
 	switch p.GetTokenStream().LA(1) {
 	case ActionParserSQL_STMT:
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(27)
+			p.SetState(29)
 			p.Sql_stmt()
 		}
 
 	case ActionParserIDENTIFIER, ActionParserVARIABLE:
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(28)
+			p.SetState(30)
 			p.Call_stmt()
 		}
 
@@ -534,11 +540,11 @@ func (p *ActionParser) Sql_stmt() (localctx ISql_stmtContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(31)
+		p.SetState(33)
 		p.Match(ActionParserSQL_STMT)
 	}
 	{
-		p.SetState(32)
+		p.SetState(34)
 		p.Match(ActionParserSCOL)
 	}
 
@@ -672,27 +678,27 @@ func (p *ActionParser) Call_stmt() (localctx ICall_stmtContext) {
 	}()
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(37)
+	p.SetState(39)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	if _la == ActionParserVARIABLE {
 		{
-			p.SetState(34)
+			p.SetState(36)
 			p.Call_receivers()
 		}
 		{
-			p.SetState(35)
+			p.SetState(37)
 			p.Match(ActionParserEQ)
 		}
 
 	}
 	{
-		p.SetState(39)
+		p.SetState(41)
 		p.Call_body()
 	}
 	{
-		p.SetState(40)
+		p.SetState(42)
 		p.Match(ActionParserSCOL)
 	}
 
@@ -836,24 +842,24 @@ func (p *ActionParser) Call_receivers() (localctx ICall_receiversContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(42)
+		p.SetState(44)
 		p.Variable_name()
 	}
-	p.SetState(47)
+	p.SetState(49)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	for _la == ActionParserCOMMA {
 		{
-			p.SetState(43)
+			p.SetState(45)
 			p.Match(ActionParserCOMMA)
 		}
 		{
-			p.SetState(44)
+			p.SetState(46)
 			p.Variable_name()
 		}
 
-		p.SetState(49)
+		p.SetState(51)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
@@ -955,7 +961,7 @@ func (p *ActionParser) Literal_value() (localctx ILiteral_valueContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(50)
+		p.SetState(52)
 		_la = p.GetTokenStream().LA(1)
 
 		if !(_la == ActionParserUNSIGNED_NUMBER_LITERAL || _la == ActionParserSTRING_LITERAL) {
@@ -1057,8 +1063,103 @@ func (p *ActionParser) Variable_name() (localctx IVariable_nameContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(52)
+		p.SetState(54)
 		p.Match(ActionParserVARIABLE)
+	}
+
+	return localctx
+}
+
+// IBlock_variable_nameContext is an interface to support dynamic dispatch.
+type IBlock_variable_nameContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// Getter signatures
+	BLOCK_VARIABLE() antlr.TerminalNode
+
+	// IsBlock_variable_nameContext differentiates from other interfaces.
+	IsBlock_variable_nameContext()
+}
+
+type Block_variable_nameContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyBlock_variable_nameContext() *Block_variable_nameContext {
+	var p = new(Block_variable_nameContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = ActionParserRULE_block_variable_name
+	return p
+}
+
+func (*Block_variable_nameContext) IsBlock_variable_nameContext() {}
+
+func NewBlock_variable_nameContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *Block_variable_nameContext {
+	var p = new(Block_variable_nameContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = ActionParserRULE_block_variable_name
+
+	return p
+}
+
+func (s *Block_variable_nameContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *Block_variable_nameContext) BLOCK_VARIABLE() antlr.TerminalNode {
+	return s.GetToken(ActionParserBLOCK_VARIABLE, 0)
+}
+
+func (s *Block_variable_nameContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *Block_variable_nameContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *Block_variable_nameContext) Accept(visitor antlr.ParseTreeVisitor) interface{} {
+	switch t := visitor.(type) {
+	case ActionParserVisitor:
+		return t.VisitBlock_variable_name(s)
+
+	default:
+		return t.VisitChildren(s)
+	}
+}
+
+func (p *ActionParser) Block_variable_name() (localctx IBlock_variable_nameContext) {
+	this := p
+	_ = this
+
+	localctx = NewBlock_variable_nameContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 14, ActionParserRULE_block_variable_name)
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(56)
+		p.Match(ActionParserBLOCK_VARIABLE)
 	}
 
 	return localctx
@@ -1142,7 +1243,7 @@ func (p *ActionParser) Fn_name() (localctx IFn_nameContext) {
 	_ = this
 
 	localctx = NewFn_nameContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 14, ActionParserRULE_fn_name)
+	p.EnterRule(localctx, 16, ActionParserRULE_fn_name)
 	var _la int
 
 	defer func() {
@@ -1163,20 +1264,20 @@ func (p *ActionParser) Fn_name() (localctx IFn_nameContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(54)
+		p.SetState(58)
 		p.Match(ActionParserIDENTIFIER)
 	}
-	p.SetState(57)
+	p.SetState(61)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	if _la == ActionParserPERIOD {
 		{
-			p.SetState(55)
+			p.SetState(59)
 			p.Match(ActionParserPERIOD)
 		}
 		{
-			p.SetState(56)
+			p.SetState(60)
 			p.Match(ActionParserIDENTIFIER)
 		}
 
@@ -1292,7 +1393,7 @@ func (p *ActionParser) Call_body() (localctx ICall_bodyContext) {
 	_ = this
 
 	localctx = NewCall_bodyContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 16, ActionParserRULE_call_body)
+	p.EnterRule(localctx, 18, ActionParserRULE_call_body)
 
 	defer func() {
 		p.ExitRule()
@@ -1312,19 +1413,19 @@ func (p *ActionParser) Call_body() (localctx ICall_bodyContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(59)
+		p.SetState(63)
 		p.Fn_name()
 	}
 	{
-		p.SetState(60)
+		p.SetState(64)
 		p.Match(ActionParserL_PAREN)
 	}
 	{
-		p.SetState(61)
+		p.SetState(65)
 		p.Fn_arg_list()
 	}
 	{
-		p.SetState(62)
+		p.SetState(66)
 		p.Match(ActionParserR_PAREN)
 	}
 
@@ -1341,6 +1442,7 @@ type IFn_argContext interface {
 	// Getter signatures
 	Literal_value() ILiteral_valueContext
 	Variable_name() IVariable_nameContext
+	Block_variable_name() IBlock_variable_nameContext
 
 	// IsFn_argContext differentiates from other interfaces.
 	IsFn_argContext()
@@ -1405,6 +1507,22 @@ func (s *Fn_argContext) Variable_name() IVariable_nameContext {
 	return t.(IVariable_nameContext)
 }
 
+func (s *Fn_argContext) Block_variable_name() IBlock_variable_nameContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IBlock_variable_nameContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IBlock_variable_nameContext)
+}
+
 func (s *Fn_argContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
@@ -1428,7 +1546,7 @@ func (p *ActionParser) Fn_arg() (localctx IFn_argContext) {
 	_ = this
 
 	localctx = NewFn_argContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 18, ActionParserRULE_fn_arg)
+	p.EnterRule(localctx, 20, ActionParserRULE_fn_arg)
 
 	defer func() {
 		p.ExitRule()
@@ -1446,22 +1564,29 @@ func (p *ActionParser) Fn_arg() (localctx IFn_argContext) {
 		}
 	}()
 
-	p.SetState(66)
+	p.SetState(71)
 	p.GetErrorHandler().Sync(p)
 
 	switch p.GetTokenStream().LA(1) {
 	case ActionParserUNSIGNED_NUMBER_LITERAL, ActionParserSTRING_LITERAL:
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(64)
+			p.SetState(68)
 			p.Literal_value()
 		}
 
 	case ActionParserVARIABLE:
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(65)
+			p.SetState(69)
 			p.Variable_name()
+		}
+
+	case ActionParserBLOCK_VARIABLE:
+		p.EnterOuterAlt(localctx, 3)
+		{
+			p.SetState(70)
+			p.Block_variable_name()
 		}
 
 	default:
@@ -1587,7 +1712,7 @@ func (p *ActionParser) Fn_arg_list() (localctx IFn_arg_listContext) {
 	_ = this
 
 	localctx = NewFn_arg_listContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 20, ActionParserRULE_fn_arg_list)
+	p.EnterRule(localctx, 22, ActionParserRULE_fn_arg_list)
 	var _la int
 
 	defer func() {
@@ -1607,32 +1732,32 @@ func (p *ActionParser) Fn_arg_list() (localctx IFn_arg_listContext) {
 	}()
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(69)
+	p.SetState(74)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
-	if (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&2883584) != 0 {
+	if (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&6029312) != 0 {
 		{
-			p.SetState(68)
+			p.SetState(73)
 			p.Fn_arg()
 		}
 
 	}
-	p.SetState(75)
+	p.SetState(80)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	for _la == ActionParserCOMMA {
 		{
-			p.SetState(71)
+			p.SetState(76)
 			p.Match(ActionParserCOMMA)
 		}
 		{
-			p.SetState(72)
+			p.SetState(77)
 			p.Fn_arg()
 		}
 
-		p.SetState(77)
+		p.SetState(82)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}

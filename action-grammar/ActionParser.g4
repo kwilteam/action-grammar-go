@@ -40,6 +40,10 @@ variable_name:
     VARIABLE
 ;
 
+block_variable_name:
+    BLOCK_VARIABLE
+;
+
 // `a.b` is only for extension calls for now
 fn_name:
     IDENTIFIER (PERIOD IDENTIFIER)?
@@ -54,12 +58,12 @@ call_body:
 fn_arg:
     literal_value
     | variable_name
+    | block_variable_name
 ;
 
 fn_arg_list:
     fn_arg? (COMMA fn_arg)*
 ;
-
 
 //expr:
 //    literal_value

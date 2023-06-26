@@ -35,6 +35,10 @@ func (v *BaseActionParserVisitor) VisitVariable_name(ctx *Variable_nameContext) 
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseActionParserVisitor) VisitBlock_variable_name(ctx *Block_variable_nameContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseActionParserVisitor) VisitFn_name(ctx *Fn_nameContext) interface{} {
 	return v.VisitChildren(ctx)
 }
