@@ -12,9 +12,29 @@ R_PAREN:   ')';
 COMMA:     ',';
 DOLLAR:    '$';
 AT:        '@';
-EQ:        '=';
-PLUS:      '+';
+ASSIGN:    '=';
 PERIOD:    '.';
+//// sql scalar function expressions symbols
+//// probably a different Lexical mode is a good idea
+PLUS:      '+';
+MINUS:     '-';
+STAR:      '*';
+DIV:       '/';
+MOD:       '%';
+TILDE:     '~';
+PIPE2:     '||';
+LT2:       '<<';
+GT2:       '>>';
+AMP:       '&';
+PIPE:      '|';
+EQ:        '==';
+LT:        '<';
+LT_EQ:     '<=';
+GT:        '>';
+GT_EQ:     '>=';
+SQL_NOT_EQ1: '!=';
+SQL_NOT_EQ2: '<>';
+////
 
 // keywords
 // sql keywords
@@ -23,6 +43,13 @@ INSERT_:   [iI][nN][sS][eE][rR][tT];
 UPDATE_:   [uU][pP][dD][aA][tT][eE];
 DELETE_:   [dD][eE][lL][eE][tT][eE];
 WITH_:     [wW][iI][tT][hH]        ;
+
+//// scalar functions expressions keyworkds
+//// probably a different Lexical mode is a good idea
+NOT_: 'not';
+AND_: 'and';
+OR_:  'or';
+////
 
 SQL_KEYWORDS: SELECT_ | INSERT_ | UPDATE_ | DELETE_ | WITH_;
 // we only need sql statement as a whole, sql-parser will parse it
