@@ -72,8 +72,7 @@ SIGNED_NUMBER_LITERAL:
 ;
 
 STRING_LITERAL:
-    DOUBLE_QUOTE_STRING
-    | SINGLE_QUOTE_STRING
+    SINGLE_QUOTE_STRING
 ;
 
 WS:            [ \t]+        -> channel(HIDDEN);
@@ -88,5 +87,5 @@ fragment DIGIT: [0-9];
 fragment DOUBLE_QUOTE_STRING_CHAR: ~["\r\n\\] | ('\\' .);
 fragment SINGLE_QUOTE_STRING_CHAR: ~['\r\n\\] | ('\\' .);
 
-fragment DOUBLE_QUOTE_STRING: '"' DOUBLE_QUOTE_STRING_CHAR* '"';
+//fragment DOUBLE_QUOTE_STRING: '"' DOUBLE_QUOTE_STRING_CHAR* '"';
 fragment SINGLE_QUOTE_STRING: '\'' SINGLE_QUOTE_STRING_CHAR* '\'';
