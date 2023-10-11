@@ -1,13 +1,12 @@
-// Code generated from ActionLexer.g4 by ANTLR 4.12.0. DO NOT EDIT.
+// Code generated from ActionLexer.g4 by ANTLR 4.13.1. DO NOT EDIT.
 
 package actgrammar
 
 import (
 	"fmt"
+	"github.com/antlr4-go/antlr/v4"
 	"sync"
 	"unicode"
-
-	"github.com/antlr/antlr4/runtime/Go/antlr/v4"
 )
 
 // Suppress unused import error
@@ -22,33 +21,33 @@ type ActionLexer struct {
 	// TODO: EOF string
 }
 
-var actionlexerLexerStaticData struct {
+var ActionLexerLexerStaticData struct {
 	once                   sync.Once
 	serializedATN          []int32
-	channelNames           []string
-	modeNames              []string
-	literalNames           []string
-	symbolicNames          []string
-	ruleNames              []string
-	predictionContextCache *antlr.PredictionContextCache
+	ChannelNames           []string
+	ModeNames              []string
+	LiteralNames           []string
+	SymbolicNames          []string
+	RuleNames              []string
+	PredictionContextCache *antlr.PredictionContextCache
 	atn                    *antlr.ATN
 	decisionToDFA          []*antlr.DFA
 }
 
 func actionlexerLexerInit() {
-	staticData := &actionlexerLexerStaticData
-	staticData.channelNames = []string{
+	staticData := &ActionLexerLexerStaticData
+	staticData.ChannelNames = []string{
 		"DEFAULT_TOKEN_CHANNEL", "HIDDEN",
 	}
-	staticData.modeNames = []string{
+	staticData.ModeNames = []string{
 		"DEFAULT_MODE",
 	}
-	staticData.literalNames = []string{
+	staticData.LiteralNames = []string{
 		"", "';'", "'('", "')'", "','", "'$'", "'@'", "'='", "'.'", "'+'", "'-'",
 		"'*'", "'/'", "'%'", "'<'", "'<='", "'>'", "'>='", "'!='", "'<>'", "",
 		"", "", "", "", "'not'", "'and'", "'or'",
 	}
-	staticData.symbolicNames = []string{
+	staticData.SymbolicNames = []string{
 		"", "SCOL", "L_PAREN", "R_PAREN", "COMMA", "DOLLAR", "AT", "ASSIGN",
 		"PERIOD", "PLUS", "MINUS", "STAR", "DIV", "MOD", "LT", "LT_EQ", "GT",
 		"GT_EQ", "SQL_NOT_EQ1", "SQL_NOT_EQ2", "SELECT_", "INSERT_", "UPDATE_",
@@ -56,7 +55,7 @@ func actionlexerLexerInit() {
 		"IDENTIFIER", "VARIABLE", "BLOCK_VARIABLE", "UNSIGNED_NUMBER_LITERAL",
 		"STRING_LITERAL", "WS", "TERMINATOR", "BLOCK_COMMENT", "LINE_COMMENT",
 	}
-	staticData.ruleNames = []string{
+	staticData.RuleNames = []string{
 		"SCOL", "L_PAREN", "R_PAREN", "COMMA", "DOLLAR", "AT", "ASSIGN", "PERIOD",
 		"PLUS", "MINUS", "STAR", "DIV", "MOD", "LT", "LT_EQ", "GT", "GT_EQ",
 		"SQL_NOT_EQ1", "SQL_NOT_EQ2", "SELECT_", "INSERT_", "UPDATE_", "DELETE_",
@@ -65,7 +64,7 @@ func actionlexerLexerInit() {
 		"WS", "TERMINATOR", "BLOCK_COMMENT", "LINE_COMMENT", "WSNL", "DIGIT",
 		"DOUBLE_QUOTE_STRING_CHAR", "SINGLE_QUOTE_STRING_CHAR", "SINGLE_QUOTE_STRING",
 	}
-	staticData.predictionContextCache = antlr.NewPredictionContextCache()
+	staticData.PredictionContextCache = antlr.NewPredictionContextCache()
 	staticData.serializedATN = []int32{
 		4, 0, 38, 271, 6, -1, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2,
 		4, 7, 4, 2, 5, 7, 5, 2, 6, 7, 6, 2, 7, 7, 7, 2, 8, 7, 8, 2, 9, 7, 9, 2,
@@ -208,7 +207,7 @@ func actionlexerLexerInit() {
 // NewActionLexer(). You can call this function if you wish to initialize the static state ahead
 // of time.
 func ActionLexerInit() {
-	staticData := &actionlexerLexerStaticData
+	staticData := &ActionLexerLexerStaticData
 	staticData.once.Do(actionlexerLexerInit)
 }
 
@@ -217,13 +216,13 @@ func NewActionLexer(input antlr.CharStream) *ActionLexer {
 	ActionLexerInit()
 	l := new(ActionLexer)
 	l.BaseLexer = antlr.NewBaseLexer(input)
-	staticData := &actionlexerLexerStaticData
-	l.Interpreter = antlr.NewLexerATNSimulator(l, staticData.atn, staticData.decisionToDFA, staticData.predictionContextCache)
-	l.channelNames = staticData.channelNames
-	l.modeNames = staticData.modeNames
-	l.RuleNames = staticData.ruleNames
-	l.LiteralNames = staticData.literalNames
-	l.SymbolicNames = staticData.symbolicNames
+	staticData := &ActionLexerLexerStaticData
+	l.Interpreter = antlr.NewLexerATNSimulator(l, staticData.atn, staticData.decisionToDFA, staticData.PredictionContextCache)
+	l.channelNames = staticData.ChannelNames
+	l.modeNames = staticData.ModeNames
+	l.RuleNames = staticData.RuleNames
+	l.LiteralNames = staticData.LiteralNames
+	l.SymbolicNames = staticData.SymbolicNames
 	l.GrammarFileName = "ActionLexer.g4"
 	// TODO: l.EOF = antlr.TokenEOF
 

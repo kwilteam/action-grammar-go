@@ -1,7 +1,7 @@
-// Code generated from ActionParser.g4 by ANTLR 4.12.0. DO NOT EDIT.
+// Code generated from ActionParser.g4 by ANTLR 4.13.1. DO NOT EDIT.
 
 package actgrammar // ActionParser
-import "github.com/antlr/antlr4/runtime/Go/antlr/v4"
+import "github.com/antlr4-go/antlr/v4"
 
 // A complete Visitor for a parse tree produced by ActionParser.
 type ActionParserVisitor interface {
