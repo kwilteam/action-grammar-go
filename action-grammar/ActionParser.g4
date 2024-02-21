@@ -91,11 +91,11 @@ fn_arg_list:
 // This is only meant to support the most basic expressions.
 //
 // binary operators precedence: highest to lowest:
-//   ||
 //   * / %
-//   << >> & |
+//   + -
 //   < <= > >=
-//   = == != <>
+//   == != <>
+//   =
 //   AND
 //   OR
 fn_arg_expr:
@@ -103,22 +103,20 @@ fn_arg_expr:
     literal_value
     | variable
     | block_var
+    // scalar functions
+    | sfn_name L_PAREN ( (fn_arg_expr (COMMA fn_arg_expr)*) | STAR )? R_PAREN
     // order is relevant for below expressions
     | L_PAREN elevate_expr=fn_arg_expr R_PAREN
-    | ( MINUS | PLUS | TILDE ) unary_expr=fn_arg_expr
+    | ( MINUS | PLUS ) unary_expr=fn_arg_expr
     // binary operators
-    | fn_arg_expr PIPE2 fn_arg_expr
     | fn_arg_expr ( STAR | DIV | MOD ) fn_arg_expr
     | fn_arg_expr ( PLUS | MINUS) fn_arg_expr
-    | fn_arg_expr ( LT2 | GT2 | AMP | PIPE ) fn_arg_expr
     | fn_arg_expr ( LT | LT_EQ | GT | GT_EQ ) fn_arg_expr
-    | fn_arg_expr ( ASSIGN | EQ | SQL_NOT_EQ1 | SQL_NOT_EQ2 ) fn_arg_expr
+    | fn_arg_expr ( ASSIGN | SQL_NOT_EQ1 | SQL_NOT_EQ2 ) fn_arg_expr
     // logical operators
     | NOT_ unary_expr=fn_arg_expr
     | fn_arg_expr AND_ fn_arg_expr
     | fn_arg_expr OR_ fn_arg_expr
-    // scalar functions
-    | sfn_name L_PAREN ( (fn_arg_expr (COMMA fn_arg_expr)*) | STAR )? R_PAREN
 ;
 
 // future expr, replace whole `call_body`?
