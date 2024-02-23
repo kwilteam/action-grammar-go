@@ -6,5 +6,6 @@ help:
 
 build: ## generate antlr code
 	@echo Generate antlr code
-	@rm -rf ./actgrammar/{*.go,*.interp,*.tokens}
+	@rm -rf ./actgrammar/*
+	@rm -rf ./action-grammar/{gen,.antlr}/*
 	@cd ./action-grammar && ./generate.sh Go actgrammar ../actgrammar
