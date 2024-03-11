@@ -46,7 +46,7 @@ OR_:  'or';
 
 SQL_KEYWORDS: SELECT_ | INSERT_ | UPDATE_ | DELETE_ | WITH_;
 // we only need sql statement as a whole, sql-parser will parse it
-SQL_STMT: SQL_KEYWORDS ~[;}]+;
+SQL_STMT: SQL_KEYWORDS WSNL ~[;}]+;
 
 // literals
 IDENTIFIER:
